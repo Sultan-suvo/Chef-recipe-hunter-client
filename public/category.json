@@ -1,0 +1,23 @@
+[
+    {
+      "id": 1,
+      "name": "Desserts",
+      "image": "https://media.istockphoto.com/id/1185515984/photo/christmas-baking-table-scene-with-assorted-sweets-and-cookies-top-view-over-a-rustic-wood.jpg?s=612x612&w=0&k=20&c=cWVTyQfwrge2OfuWsRCAlDbZ9fSZO6pg_yuiGq9naLs="
+    },
+    {
+      "id": 2,
+      "name": "Breakfast",
+      "image": "https://media.istockphoto.com/id/533645537/photo/breakfast-with-bacon-eggs-pancakes-and-toast.jpg?s=612x612&w=0&k=20&c=TumrEwImmLi4TIVeirgynvTpHhyvt9LeiDXLci45NWg="
+    },
+    {
+      "id": 3,
+      "name": "Vegetarian",
+      "image":"https://media.istockphoto.com/id/1147252758/photo/healthy-vegetarian-food-background-vegetables-pesto-and-lentil-curry-with-tofu.jpg?s=1024x1024&w=is&k=20&c=YaXdh9gt99orf5e4CqVd0pR4ZV1oF2CjQqiFVT02e6o="
+    },
+    {
+      "id": 4,
+      "name": "Seafood",
+      "image": "https://media.istockphoto.com/id/1156027693/photo/fresh-salmon-steak-with-a-variety-of-seafood-and-herbs.jpg?s=1024x1024&w=is&k=20&c=Zqo2as6_WsexC3CtFkshB7KwjDRviLvryQUbv0dulTo="
+    }
+  ]
+  
