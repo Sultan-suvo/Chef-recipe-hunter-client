@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProviders';
 
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(true);
-
+    const location = useLocation()
     const { user, logOut } = useContext(AuthContext);
     console.log(user);
 
@@ -21,7 +21,7 @@ function Navbar() {
     }
 
     return (
-        <nav className="flex items-center justify-between flex-wrap bg-gray-600 p-6 container">
+        <nav className="flex items-center justify-between flex-wrap bg-gray-600 p-4 container">
             <div className="flex items-center flex-shrink-0 text-white mr-6">
                 <h2 className="font-bold text-2xl ml-2">
                     <span className='text-2xl text-red-600'>Food</span>genix</h2>
@@ -45,31 +45,21 @@ function Navbar() {
                 className={`w-full ${isOpen ? 'block' : 'hidden'
                     } flex-grow  lg:items-center lg:w-auto`}
             >
-                <div className="text-sm lg:flex-grow lg:flex items-center lg:justify-end">
+                <div className="text-sm pt-2 lg:flex-grow lg:flex items-center lg:justify-end">
                     <Link
-                        to='/'
-                        className="block mt-4 text-base lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-4"
+                        to="/"
+                        className={`${location.pathname === '/' ? 'text-red-600 font-bold' : 'text-gray-500'
+                            } px-1 py-2`}
                     >
                         Home
                     </Link>
                     <Link
-                        to='/blog'
-                        className="block mt-4 text-base lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-4"
+                        to="/blog"
+                        className={`${location.pathname === '/blog' ? 'text-red-600 font-bold' : 'text-gray-500'
+                            } px-4 py-2`}
                     >
                         Blog
                     </Link>
-                   
-                    {/* {
-                    user ?
-                        <div>
-                            <img src={user.photoURL} alt="" />
-                            <button onClick={handleLogOut} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4 md:mt-0">Sign Out</button>
-                        </div>
-                        :
-                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4 md:mt-0">
-                        <Link to='/login'>Log in</Link>
-                     </button>
-                } */}
 
                     {user ? (
                         <div className="flex items-center justify-center gap-6">
@@ -87,11 +77,11 @@ function Navbar() {
                             </button>
                         </div>
                     ) : (
-                        <Link to="/login">
+                        
                             <button className="btn border-0 text-white bg-success mt-3 px-4 py-2 font-bold rounded-md flex items-center gap-1">
-                                Login
+                                <Link to='/login'>Login</Link>
                             </button>
-                        </Link>
+                        
                     )}
 
 
