@@ -1,12 +1,58 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FaGithub, FaGoogle } from "react-icons/fa";
+import { AuthContext } from "../../Providers/AuthProviders";
 
 const Login = () => {
+    const { signIn, signInWithGoogle,signInWithGithub } = useContext(AuthContext)
+
+    const handleLogin = (event) => {
+        event.preventDefault();
+
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
+
+        signIn(email, password)
+            .then((result) => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                form.reset();
+
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then(result => {
+                const loggedUser = result.user
+                console.log(loggedUser);
+            })
+            .error(error => {
+                console.log(error);
+            })
+    }
+
+    const handleGithubSignIn = ()=>{
+        signInWithGithub()
+        .then(result => {
+            const loggedUser = result.user
+            console.log(loggedUser);
+            
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
+
     return (
         <section className="max-w-7xl mx-auto px-4 py-12">
             {/* Component: Card with form */}
-            <form className="max-w-[415px] mx-auto overflow-hidden bg-white rounded shadow-md text-slate-500 shadow-slate-200">
+            <form onSubmit={handleLogin} className="max-w-[415px] mx-auto overflow-hidden bg-white rounded shadow-md text-slate-500 shadow-slate-200">
                 {/* Body*/}
                 <div className="p-6">
                     <header className="mb-4 text-center">
@@ -18,8 +64,9 @@ const Login = () => {
                             <input
                                 id="id-b03"
                                 type="email"
-                                name="id-b03"
+                                name="email"
                                 placeholder="your name"
+                                required
                                 className="relative w-full h-10 px-4 text-sm placeholder-transparent transition-all border rounded outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
                             />
                             <label
@@ -37,8 +84,9 @@ const Login = () => {
                             <input
                                 id="id-b13"
                                 type="password"
-                                name="id-b13"
+                                name="password"
                                 placeholder="your password"
+                                required
                                 className="relative w-full h-10 px-4 pr-12 text-sm placeholder-transparent transition-all border rounded outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
                             />
                             <label
@@ -87,12 +135,12 @@ const Login = () => {
                     <span className="my-0 mx-[10px] font-bold text-slate-400">or</span>
                     <hr className="flex-1 border-t border-slate-200" />
                 </div>
-                <div className="flex items-center justify-center gap-[6px] w-ful; mx-6 h-[50px] border border-slate-200 rounded-md cursor-pointer">
-                    <FaGithub className="w-7 h-7 rounded-md" ></FaGithub>
+                <div onClick={handleGoogleSignIn} className="flex items-center justify-center gap-[6px] w-ful; mx-6 h-[50px] border bg-blue-200 hover:bg-blue-500 border-slate-200 rounded-md cursor-pointer">
+                    <FaGithub className="w-7 h-7 rounded-md"></FaGithub>
                     <span>Continue with Google</span>
                 </div>
 
-                <div className="flex items-center justify-center gap-[6px] w-ful; mx-6 h-[50px] border border-slate-200 rounded-md cursor-pointer mt-3 mb-7">
+                <div onClick={handleGithubSignIn} className="flex items-center justify-center gap-[6px] w-ful; mx-6 h-[50px] border bg-emerald-200 hover:bg-emerald-500 border-slate-200 rounded-md cursor-pointer mt-3 mb-7">
                     <FaGoogle className="w-8 h-8 rounded-md" ></FaGoogle>
 
                     <span>Continue with Github</span>

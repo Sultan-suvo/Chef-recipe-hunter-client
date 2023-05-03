@@ -1,10 +1,23 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaUserCircle } from "react-icons/fa";
+import { AuthContext } from '../../Providers/AuthProviders';
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(true);
+
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
 
     return (
         <nav className="flex items-center justify-between flex-wrap bg-gray-600 p-6 container">
@@ -52,10 +65,19 @@ function Navbar() {
                         <FaUserCircle />
                     </Link>
 
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4 md:mt-0">
-                       <Link to='/login'>Log in</Link>
-                    </button>
+                   
 
+                    {
+                    user ?
+                        <div>
+                            <span className='text-white'>{user.email}</span>
+                            <button onClick={handleLogOut} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4 md:mt-0">Sign Out</button>
+                        </div>
+                        :
+                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4 md:mt-0">
+                        <Link to='/login'>Log in</Link>
+                     </button>
+                }
                 </div>
             </div>
 
