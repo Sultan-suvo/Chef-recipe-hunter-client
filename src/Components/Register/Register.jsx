@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../Providers/AuthProviders";
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext)
+    const [error , setError] = useState('')
+    const { createUser,signInWithGoogle,signInWithGithub  } = useContext(AuthContext)
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -13,6 +14,14 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
+
+        setError('')
+
+        if (password.length < 6) {
+            setError('Please add at least 6 characters in your password')
+            return;
+        }
+        
 
         createUser(email, password)
             .then((result) => {
@@ -25,6 +34,30 @@ const Register = () => {
                 setError(error.message)
             });
     }
+
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then(result => {
+                const loggedUser = result.user
+                console.log(loggedUser);
+            })
+            .error(error => {
+                setError(error.message);
+            })
+    }
+
+    const handleGithubSignIn = ()=>{
+        signInWithGithub()
+        .then(result => {
+            const loggedUser = result.user
+            console.log(loggedUser);
+            
+        })
+        .catch(error => {
+            setError(error.message);
+        })
+    }
+
     return (
         <section className="max-w-7xl mx-auto px-4 py-12">
             {/* Component: Card with form */}
@@ -143,22 +176,25 @@ const Register = () => {
                         Login
                     </Link>
                 </div>
+                <p className='text-danger text-center mt-4'><small>{error}</small></p>
                 <div className="w-full px-6 flex items-center text-center mx-auto py-5">
                     <hr className="flex-1 border-t border-slate-200" />
                     <span className="my-0 mx-[10px] font-bold text-slate-400">or</span>
                     <hr className="flex-1 border-t border-slate-200" />
                 </div>
-                <div className="flex items-center justify-center gap-[6px] w-ful; mx-6 h-[50px] border border-slate-200 rounded-md cursor-pointer">
-                    <FaGithub className="w-7 h-7 rounded-md" ></FaGithub>
+                <div onClick={handleGoogleSignIn} className="flex items-center justify-center gap-[6px] w-ful; mx-6 h-[50px] border bg-blue-200 hover:bg-blue-500 border-slate-200 rounded-md cursor-pointer">
+                    <FaGithub className="w-7 h-7 rounded-md"></FaGithub>
                     <span>Continue with Google</span>
                 </div>
 
-                <div className="flex items-center justify-center gap-[6px] w-ful; mx-6 h-[50px] border border-slate-200 rounded-md cursor-pointer mt-3 mb-7">
+                <div onClick={handleGithubSignIn} className="flex items-center justify-center gap-[6px] w-ful; mx-6 h-[50px] border bg-emerald-200 hover:bg-emerald-500 border-slate-200 rounded-md cursor-pointer mt-3 mb-7">
                     <FaGoogle className="w-8 h-8 rounded-md" ></FaGoogle>
+
                     <span>Continue with Github</span>
                 </div>
             </form>
             {/* End Card with form */}
+           
         </section>
     );
 };

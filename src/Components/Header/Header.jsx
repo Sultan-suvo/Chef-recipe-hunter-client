@@ -12,7 +12,7 @@ const Header = () => {
                 backgroundImage: `url(${banner})`,
             }}
         >
-            <div className='md:flex justify-between pr-20 items-center py-12 px-12 bg-slate-100 md:px-40'>
+            <div className='md:flex justify-between pr-20 items-center py-10 px-12 bg-slate-100 md:px-40'>
                 <div>
                     <h1 className='text-5xl font-bold mb-6'>Baked Chicken <span className='text-sky-500'>Breast</span></h1>
                     <p className='text-slate-500'>A handful of simple ingredients typify the fresh, vibrant flavors of Greek cooking.</p>

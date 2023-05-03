@@ -23,7 +23,7 @@ function Navbar() {
         <nav className="flex items-center justify-between flex-wrap bg-gray-600 p-6 container">
             <div className="flex items-center flex-shrink-0 text-white mr-6">
                 <h2 className="font-bold text-2xl ml-2">
-                    <span className='text-3xl text-red-600'>TH</span>atix</h2>
+                    <span className='text-2xl text-red-600'>Food</span>genix</h2>
             </div>
             <div className="block lg:hidden">
                 <button
@@ -64,8 +64,6 @@ function Navbar() {
                     >
                         <FaUserCircle />
                     </Link>
-
-                   
 
                     {
                     user ?

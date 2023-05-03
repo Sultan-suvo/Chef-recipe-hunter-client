@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../Providers/AuthProviders";
 
 const Login = () => {
+    const [error , setError] = useState('')
     const { signIn, signInWithGoogle,signInWithGithub } = useContext(AuthContext)
 
     const handleLogin = (event) => {
@@ -13,6 +14,13 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
+
+        setError('')
+
+        if (password.length < 6) {
+            setError('Please add at least 6 characters in your password')
+            return;
+        }
 
         signIn(email, password)
             .then((result) => {
@@ -130,6 +138,7 @@ const Login = () => {
                         Register
                     </Link>
                 </div>
+                <p className='text-danger text-center mt-4'><small>{error}</small></p>
                 <div className="w-full px-6 flex items-center text-center mx-auto py-5">
                     <hr className="flex-1 border-t border-slate-200" />
                     <span className="my-0 mx-[10px] font-bold text-slate-400">or</span>
