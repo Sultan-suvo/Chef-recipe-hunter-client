@@ -1,13 +1,14 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaUserCircle } from "react-icons/fa";
 import { AuthContext } from '../../Providers/AuthProviders';
+
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(true);
 
     const { user, logOut } = useContext(AuthContext);
+    console.log(user);
 
     const handleLogOut = () => {
         logOut()
@@ -57,25 +58,44 @@ function Navbar() {
                     >
                         Blog
                     </Link>
-                    <Link
-                        to='/blog'
-                        className="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-4"
-                        style={{ fontSize: '1.5rem' }}
-                    >
-                        <FaUserCircle />
-                    </Link>
-
-                    {
+                   
+                    {/* {
                     user ?
                         <div>
-                            <span className='text-white'>{user.email}</span>
+                            <img src={user.photoURL} alt="" />
                             <button onClick={handleLogOut} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4 md:mt-0">Sign Out</button>
                         </div>
                         :
                         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4 md:mt-0">
                         <Link to='/login'>Log in</Link>
                      </button>
-                }
+                } */}
+
+                    {user ? (
+                        <div className="flex items-center justify-center gap-6">
+                            <img
+                                title={user.displayName}
+                                className="w-12 h-12 rounded-full"
+                                src={user.photoURL}
+                                alt=""
+                            />
+                            <button
+                                onClick={handleLogOut}
+                                className="btn border-0 text-white bg-success px-4 py-2 font-bold rounded-md flex items-center gap-1"
+                            >
+                                Logout
+                            </button>
+                        </div>
+                    ) : (
+                        <Link to="/login">
+                            <button className="btn border-0 text-white bg-success mt-3 px-4 py-2 font-bold rounded-md flex items-center gap-1">
+                                Login
+                            </button>
+                        </Link>
+                    )}
+
+
+
                 </div>
             </div>
 

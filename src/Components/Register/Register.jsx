@@ -11,9 +11,10 @@ const Register = () => {
         event.preventDefault();
 
         const form = event.target;
+        const displayName = form.displayName.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+        const photoURL = form.photoURL.value;
 
         setError('')
 
@@ -23,7 +24,7 @@ const Register = () => {
         }
         
 
-        createUser(email, password)
+        createUser(email, password, displayName, photoURL)
             .then((result) => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
@@ -71,9 +72,9 @@ const Register = () => {
                         {/* Input field */}
                         <div className="relative my-6">
                             <input
-                                id="name"
+                                id="displayName"
                                 type="text"
-                                name="name"
+                                name="displayName"
                                 placeholder="Your name"
                                 required
                                 className="relative w-full h-10 px-4 text-sm placeholder-transparent transition-all border rounded outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
@@ -90,7 +91,7 @@ const Register = () => {
                         </div>
                         <div className="relative my-6">
                             <input
-                                id="id-b03"
+                                id="email"
                                 type="email"
                                 name="email"
                                 placeholder="your name"
@@ -110,7 +111,7 @@ const Register = () => {
                         {/* Input field */}
                         <div className="relative my-6">
                             <input
-                                id="id-b13"
+                                id="password"
                                 type="password"
                                 name="password"
                                 placeholder="your password"
@@ -143,9 +144,9 @@ const Register = () => {
                         </div>
                         <div className="relative my-6">
                             <input
-                                id="photoUrl"
+                                id="photoURL"
                                 type="text"
-                                name="photo-url"
+                                name="photoURL"
                                 placeholder="Your photo url"
                                 className="relative w-full h-10 px-4 text-sm placeholder-transparent transition-all border rounded outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
                             />

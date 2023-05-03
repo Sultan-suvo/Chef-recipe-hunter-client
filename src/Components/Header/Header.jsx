@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
 import cooker from '../../assets/banner.jpg'
 import banner from '../../assets/background.jpg'
-import {  FaPhone } from "react-icons/fa";
+import { FaPhone } from "react-icons/fa";
 
 const Header = () => {
+   
     return (
         <div
             className="relative bg-cover bg-center h-screen flex items-center justify-center container"
@@ -17,8 +17,8 @@ const Header = () => {
                     <h1 className='text-5xl font-bold mb-6'>Baked Chicken <span className='text-sky-500'>Breast</span></h1>
                     <p className='text-slate-500'>A handful of simple ingredients typify the fresh, vibrant flavors of Greek cooking.</p>
                     <button className="bg-blue-500 flex items-center hover:bg-blue-700 text-white font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline mt-4 md:mt-0">
-                       <FaPhone></FaPhone> 
-                       <span className='ms-2'>Contact</span>
+                        <FaPhone></FaPhone>
+                        <span className='ms-2'>Contact</span>
                     </button>
                 </div>
                 <div className='mt-16'>
