@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import ServerSiteDetails from '../ServerSiteDetails/ServerSiteDetails';
 
+
 const ServerSite = () => {
     const [serberSite, setServerSite] = useState([])
+   
     useEffect(() => {
         fetch('http://localhost:3000/chef/')
             .then(res => res.json())

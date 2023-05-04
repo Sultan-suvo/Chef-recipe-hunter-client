@@ -1,13 +1,10 @@
 import React from 'react';
 
 const ServerSiteDetails = ({ server }) => {
-  const { chef_picture, chef_name, years_of_experience, number_of_recipes, likes } = server;
-
+  const { id, chef_picture, chef_name, years_of_experience, number_of_recipes, likes } = server;
   const handleButtonClick = () => {
-    // Add your code to handle button click event here
-    console.log('Button clicked');
-  };
-
+    
+  }
   return (
     <div className="w-full  container mt-12 p-2">
       <div className="bg-white rounded-lg shadow-md overflow-hidden">
@@ -18,7 +15,7 @@ const ServerSiteDetails = ({ server }) => {
           <p className="text-gray-700 text-base">{number_of_recipes} recipes</p>
           <p className="text-gray-700 text-base">{likes} likes</p>
           <button onClick={handleButtonClick} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            View More Details
+            View Recipes Button
           </button>
         </div>
       </div>
