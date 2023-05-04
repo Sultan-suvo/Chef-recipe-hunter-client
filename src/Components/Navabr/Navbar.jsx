@@ -45,24 +45,24 @@ function Navbar() {
                 className={`w-full ${isOpen ? 'block' : 'hidden'
                     } flex-grow  lg:items-center lg:w-auto`}
             >
-                <div className="text-sm pt-2 lg:flex-grow lg:flex items-center lg:justify-end">
+                <div className="text-sm pt-2 lg:flex-grow  lg:flex items-center lg:justify-end">
                     <Link
                         to="/"
                         className={`${location.pathname === '/' ? 'text-red-600 font-bold' : 'text-gray-500'
-                            } px-1 py-2`}
+                            } px-1 py-2 text-decoration-none`}
                     >
                         Home
                     </Link>
                     <Link
                         to="/blog"
                         className={`${location.pathname === '/blog' ? 'text-red-600 font-bold' : 'text-gray-500'
-                            } px-4 py-2`}
+                            } px-4 py-2 text-decoration-none`}
                     >
                         Blog
                     </Link>
 
                     {user ? (
-                        <div className="flex items-center justify-center gap-6">
+                        <div className="flex mt-2 items-center justify-center gap-6">
                             <img
                                 title={user.displayName}
                                 className="w-12 h-12 rounded-full"
@@ -77,15 +77,11 @@ function Navbar() {
                             </button>
                         </div>
                     ) : (
-                        
-                            <button className="btn border-0 text-white bg-success mt-3 px-4 py-2 font-bold rounded-md flex items-center gap-1">
-                                <Link to='/login'>Login</Link>
-                            </button>
-                        
+
+                        <button className="btn border-0 text-white bg-success mt-3 px-4 py-2 font-bold rounded-md flex items-center gap-1">
+                            <Link className='text-decoration-none' to='/login'>Login</Link>
+                        </button>
                     )}
-
-
-
                 </div>
             </div>
 
