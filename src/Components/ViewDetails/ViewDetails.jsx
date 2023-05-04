@@ -1,11 +1,14 @@
 import React from 'react';
 import Rating from 'react-rating';
+import { FaHeart, FaPhone, FaRegStar, FaStar } from "react-icons/fa";
+import { Link } from 'react-router-dom';
+import { ToastContainer } from 'react-bootstrap';
 
 const ViewDetails = () => {
     const selectedServer = JSON.parse(localStorage.getItem('selectedChef'));
     return (
-        <div class="bg-white rounded-lg shadow-md overflow-hidden my-12 container">
-            <img className='w-25' src={selectedServer.chef_picture
+        <div class="bg-white rounded-lg text-center shadow-md overflow-hidden my-12 container">
+            <img className='w-75 mx-auto' src={selectedServer.chef_picture
             } alt="" />
             <div class="p-2">
                 <h2 class="text-gray-900 font-bold text-xl mb-2">{selectedServer.chef_name}</h2>
@@ -17,12 +20,12 @@ const ViewDetails = () => {
             </div>
             <div>
                 {selectedServer.recipes.map((recipe, index) => (
-                    <div className="card" key={index}>
-                        <h1>
+                    <div className="card text-center mt-3" key={index}>
+                        <h3>
                             {selectedServer.chef_name}s Recipe: {recipe.recipe_name}
-                        </h1>
-                        <img
-                            style={{ height: "500px", width: "95%" }}
+                        </h3>
+                        <img className='mx-auto'
+                            style={{ height: "100px", width: "25%"}}
                             src={recipe.recipes_image}
                             alt={recipe.recipe_name}
                         />
@@ -53,18 +56,7 @@ const ViewDetails = () => {
                                     ></Rating>
                                 </p>
                             </div>
-
-                            {!isFavorite.includes(recipe.recipe_id) ? (
-                                <Link className="ms-5 mb-2 " onClick={() => handleClick(recipe.recipe_id)}>
-                                    <FaHeart color="red" size={24} />{" "}
-                                </Link>
-                            ) : (
-                                <button disabled className="disabled">
-                                    <FaHeart color="red" size={24} />{" "}
-                                </button>
-                            )}
-
-                            <ToastContainer />
+                     <ToastContainer />
                         </div>
                     </div>
                 ))}
