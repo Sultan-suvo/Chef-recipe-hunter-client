@@ -127,7 +127,7 @@ const Login = () => {
                 <div className="flex justify-end p-6 -mt-5">
                     <button
                         type="submit"
-                        className="btn border-0 inline-flex items-center justify-center w-full h-10 gap-2 px-5 text-sm font-medium tracking-wide text-white transition duration-300 rounded focus-visible:outline-none whitespace-nowrap bg-emerald-500 disabled:cursor-not-allowed disabled:borde"
+                        className="btn border-0 inline-flex items-center justify-center w-full h-10 gap-2 px-5 text-sm font-medium tracking-wide text-white transition duration-300 rounded focus-visible:outline-none whitespace-nowrap bg-success disabled:cursor-not-allowed disabled:borde"
                     >
                         <span>Login</span>
                     </button>

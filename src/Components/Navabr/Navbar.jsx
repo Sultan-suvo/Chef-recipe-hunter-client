@@ -8,7 +8,6 @@ function Navbar() {
     const [isOpen, setIsOpen] = useState(true);
     const location = useLocation()
     const { user, logOut } = useContext(AuthContext);
-    console.log(user);
 
     const handleLogOut = () => {
         logOut()

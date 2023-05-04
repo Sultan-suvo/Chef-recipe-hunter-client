@@ -6,6 +6,7 @@ import FeedbackSection from '../FeedbackSection/FeedbackSection';
 import PopularRecipes from '../PopularRecipes/PopularRecipes';
 
 const Home = () => {
+   
     return (
         <div>
             <Header></Header>
