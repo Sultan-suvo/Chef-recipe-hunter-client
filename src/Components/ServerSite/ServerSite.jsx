@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ServerSiteDetails from '../ServerSiteDetails/ServerSiteDetails';
 
-
 const ServerSite = () => {
     const [serberSite, setServerSite] = useState([])
    
@@ -11,6 +10,7 @@ const ServerSite = () => {
             .then(data => setServerSite(data))
             .catch(error => console.log(error))
     }, [])
+    
     return (
         <div className='grid container grid-cols-1 md:grid-cols-3'>
             {
