@@ -7,6 +7,7 @@ import ErrorPage from "../Components/ErrorPage/ErrorPage";
 import Login from "../Components/Login/Login";
 import Register from "../Components/Register/Register";
 import ViewDetails from "../Components/ViewDetails/ViewDetails";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'viewdetails',
-                element: <ViewDetails></ViewDetails>
+                element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>
             },
             {
                 path: '/blog',
