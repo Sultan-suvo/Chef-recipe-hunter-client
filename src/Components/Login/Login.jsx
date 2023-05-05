@@ -151,13 +151,13 @@ const Login = () => {
                     <hr className="flex-1 border-t border-slate-200" />
                 </div>
                 <div onClick={handleGoogleSignIn} className="flex items-center justify-center gap-[6px] w-ful; mx-6 h-[50px] border bg-blue-200 hover:bg-blue-500 border-slate-200 rounded-md cursor-pointer">
-                    <FaGithub className="w-7 h-7 rounded-md"></FaGithub>
+                <FaGoogle className="w-8 h-8 rounded-md" ></FaGoogle>
                     <span>Continue with Google</span>
                 </div>
 
                 <div onClick={handleGithubSignIn} className="flex items-center justify-center gap-[6px] w-ful; mx-6 h-[50px] border bg-emerald-200 hover:bg-emerald-500 border-slate-200 rounded-md cursor-pointer mt-3 mb-7">
-                    <FaGoogle className="w-8 h-8 rounded-md" ></FaGoogle>
-
+                    
+                    <FaGithub className="w-7 h-7 rounded-md"></FaGithub>
                     <span>Continue with Github</span>
                 </div>
             </form>
