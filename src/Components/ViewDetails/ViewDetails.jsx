@@ -2,15 +2,24 @@ import React, { useState } from 'react';
 import Rating from 'react-rating';
 import { FaHeart, FaPhone, FaRegStar, FaStar } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-import { ToastContainer } from 'react-bootstrap';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import './ViewDetails.css'
+
 
 const ViewDetails = () => {
     const selectedServer = JSON.parse(localStorage.getItem('selectedChef'));
+    const [favorite, setFavorite] = useState(false);
 
-   
+    const handleFavorite = () => {
+        setFavorite(true);
+        toast.success("This recepie add your favourite");
+        
+    };
+
     return (
         <div class="bg-white rounded-lg text-center shadow-md overflow-hidden my-12 container">
+                  <ToastContainer />
             <img className='w-75 mx-auto' src={selectedServer.chef_picture
             } alt="" />
             <div class="p-2">
@@ -59,8 +68,7 @@ const ViewDetails = () => {
                                     ></Rating>
                                 </p>
                             </div>
-
-                           
+                            <button disabled={favorite} onClick={handleFavorite} className='btn btn-danger'>{favorite ? "Favorite" : "Add to favorites"}</button>
                         </div>
                     </div>
                 ))}

@@ -5,7 +5,7 @@ const ServerSite = () => {
     const [serberSite, setServerSite] = useState([])
    
     useEffect(() => {
-        fetch('http://localhost:3000/chef/')
+        fetch('https://assignment-server-sultan-suvo.vercel.app/chef/')
             .then(res => res.json())
             .then(data => setServerSite(data))
             .catch(error => console.log(error))
