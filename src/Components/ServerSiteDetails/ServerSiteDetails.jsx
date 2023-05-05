@@ -10,8 +10,8 @@ const ServerSiteDetails = ({ server }) => {
   //   localStorage.setItem('selectedServer', JSON.stringify(server));
   // }
   return (
-    <div className="w-full  container mt-12 p-2">
-      <div className="bg-white rounded-lg shadow-md overflow-hidden">
+    <div className="w-full  container  mt-12 p-2">
+      <div className="bg-white rounded-lg pb-2 shadow-md overflow-hidden">
         <img src={chef_picture} alt={`${chef_name} Profile Picture`} className="w-full h-32 sm:h-48 md:h-56 lg:h-64 object-cover object-center" />
         <div className="p-2">
           <h2 className="text-gray-900 font-bold text-xl mb-2">{chef_name}</h2>
